@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace CheckoutAd.Api.Controllers
 {
@@ -10,6 +11,17 @@ namespace CheckoutAd.Api.Controllers
 	[ApiController]
 	public class ValuesController : ControllerBase
 	{
+		private readonly ILogger<ValuesController> _logger;
+
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="logger"></param>
+		public ValuesController(ILogger<ValuesController> logger)
+		{
+			_logger = logger;
+		}
+
 		/// <summary>
 		/// GET api/values
 		/// </summary>
@@ -17,6 +29,7 @@ namespace CheckoutAd.Api.Controllers
 		[HttpGet]
 		public ActionResult<IEnumerable<string>> Get()
 		{
+			_logger.LogInformation("Get mthod is called");
 			return new string[] { "value1", "value2" };
 		}
 

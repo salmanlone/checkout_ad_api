@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace CheckoutAd.Api
 {
@@ -19,6 +21,8 @@ namespace CheckoutAd.Api
 		/// <param name="configuration"></param>
 		public Startup(IConfiguration configuration)
 		{
+			// Init Serilog configuration
+			Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
 			Configuration = configuration;
 		}
 
@@ -62,13 +66,16 @@ namespace CheckoutAd.Api
 		/// </summary>
 		/// <param name="app"></param>
 		/// <param name="env"></param>
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		/// <param name="loggerFactory"></param>
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 		{
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
 			}
 
+			// logging
+			loggerFactory.AddSerilog();
 			app.UseMvc();
 			app.UseSwagger();
 			app.UseSwaggerUI(c =>
