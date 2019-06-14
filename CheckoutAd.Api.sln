@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckoutAd.Api", "CheckoutAd.Api\CheckoutAd.Api.csproj", "{98EE8DB1-1C03-4DE4-844C-6DFB541A58D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckoutAd.Api", "CheckoutAd.Api\CheckoutAd.Api.csproj", "{98EE8DB1-1C03-4DE4-844C-6DFB541A58D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckoutAd.Api.Test", "CheckoutAd.Api.Test\CheckoutAd.Api.Test.csproj", "{55C649C7-596D-4081-96F2-9E554E2FADE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckoutAd.Api.Test", "CheckoutAd.Api.Test\CheckoutAd.Api.Test.csproj", "{55C649C7-596D-4081-96F2-9E554E2FADE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
