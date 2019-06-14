@@ -1,6 +1,7 @@
 ﻿using CheckoutAd.Api.Middlewares.Exceptions;
 using CheckoutAd.Api.Models.Exceptions;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Net;
@@ -14,6 +15,7 @@ namespace CheckoutAd.Api.Middlewares
 	public class CustomExceptionMiddleware
 	{
 		private readonly RequestDelegate _next;
+		private readonly ILogger<CustomExceptionMiddleware> _logger;
 
 		/// <summary>
 		/// Constructor
@@ -55,6 +57,8 @@ namespace CheckoutAd.Api.Middlewares
 				description = customerException.Description;
 				statusCode = customerException.Code;
 			}
+
+			_logger.LogError(exception, exception.Message);
 
 			response.ContentType = "application/json";
 			response.StatusCode = statusCode;
