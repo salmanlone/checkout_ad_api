@@ -6,7 +6,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>D:\personal\GitHub\checkout_ad_api\CheckoutAd.Api\bin\Debug\netcoreapp2.1\CheckoutAd.Api.xml</DocumentationFile>
-    <OutputPath></OutputPath>
+    <OutputPath>bin\Debug\netcoreapp2.1\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

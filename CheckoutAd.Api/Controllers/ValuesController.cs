@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using CheckoutAd.Api.Middlewares.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -30,6 +32,7 @@ namespace CheckoutAd.Api.Controllers
 		public ActionResult<IEnumerable<string>> Get()
 		{
 			_logger.LogInformation("Get mthod is called");
+			//throw new Exception();
 			return new string[] { "value1", "value2" };
 		}
 
@@ -42,6 +45,17 @@ namespace CheckoutAd.Api.Controllers
 		public ActionResult<string> Get(int id)
 		{
 			return "value";
+		}
+
+		/// <summary>
+		/// GET api/values/exception
+		/// </summary>
+		/// <param name="exception"></param>
+		/// <returns></returns>
+		[HttpGet("{exception}")]
+		public ActionResult<string> GetHandledException(string exception)
+		{
+			throw new NotFoundCustomException("No data found", $"Please check your parameters id: {exception}");
 		}
 
 		/// <summary>

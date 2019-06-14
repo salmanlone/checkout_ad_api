@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using CheckoutAd.Api.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -75,13 +76,14 @@ namespace CheckoutAd.Api
 			}
 
 			// logging
+			app.UseMiddleware<CustomExceptionMiddleware>();
 			loggerFactory.AddSerilog();
-			app.UseMvc();
 			app.UseSwagger();
 			app.UseSwaggerUI(c =>
 			{
 				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Checkout Ad Api");
 			});
+			app.UseMvc();
 		}
 
 		private string GetXmlCommentsPath()
